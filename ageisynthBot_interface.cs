@@ -13,6 +13,18 @@ namespace Ageisynth_CybersecurityBot_Part1
         private ArrayList replies = new ArrayList();
         private ArrayList ignore = new ArrayList();
 
+        // Predefined special questions and responses
+        private string[] specialQuestions = {
+            "how are you",
+            "what is your purpose",
+            "what can i ask about"
+        };
+
+        private string[] specialResponses = {
+            "I am a bot.\nI'm here to help you.",
+            "\nMy purpose is to provide useful cybersecurity advice.",
+            "\nYou can ask me about the following topics: password, phishing, SQL injection, Attacks, malware, and firewalls."
+        };
         public ageisynthBot_interface()
         {
         }// End of Constructor
