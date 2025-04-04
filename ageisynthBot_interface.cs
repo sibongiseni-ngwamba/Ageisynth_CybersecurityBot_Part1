@@ -32,6 +32,71 @@ namespace Ageisynth_CybersecurityBot_Part1
         {
         }// End of Constructor
 
+        // Method that handles responses to the user input
+        public void ResponsesChat(string asked)
+        {
+            // If input is empty or whitespace
+            if (string.IsNullOrWhiteSpace(asked))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("AgeisynthBot: ->");
+                Console.ResetColor();
+                TypeEffect("I didn’t quite understand that. Could you rephrase?");
+                return;
+            }
+
+            // Check if user wants to exit
+            if (asked.ToLower() == "exit")
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\nAgeisynthBot: -> ");
+                Console.ForegroundColor = ConsoleColor.Gray;
+                TypeEffect("Thank you for using Ageisynth AI, bye!");
+                Console.ResetColor();
+                Environment.Exit(0); // Ends the program
+            }
+
+            // Check for predefined special questions
+            string specialResponse = HandleSpecialQuestions(asked);
+
+            if (specialResponse != null)
+            {
+                // Respond to special question
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("AgeisynthBot: -> ");
+                Console.ResetColor();
+                TypeEffect(specialResponse);
+            }
+            else
+            {
+                // Apply keyword filtering and generate standard response
+                string message = ApplyFilter(asked);
+
+                if (!string.IsNullOrEmpty(message))
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("AgeisynthBot: -> ");
+                    Console.ResetColor();
+                    TypeEffect(message);
+
+                    // Follow-up message
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("AgeisynthBot: -> ");
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.WriteLine("I hope this response was helpful to you! You can continue or type exit to stop.");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    // If no keywords matched
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("AgeisynthBot: ->");
+                    Console.ResetColor();
+                    TypeEffect("I didn’t quite understand that. Could you rephrase?");
+                }
+            }
+        }
+
         // Method to check if user's question matches a predefined special question
         private string HandleSpecialQuestions(string userInput)
         {
