@@ -19,6 +19,10 @@ namespace Ageisynth_CybersecurityBot_Part1
             // Create a new instance of the ascii_logo class
             // This likely displays an ASCII art logo (class needs to be defined elsewhere in the project)
             new ascii_logo() { };
+
+            // Create a new instance of the ChatbotResponse class
+            // This could initiate a chatbot interaction or display a message (class needs to be defined elsewhere)
+            new ageisynthBot_interface() { };
         }
     }
 }
