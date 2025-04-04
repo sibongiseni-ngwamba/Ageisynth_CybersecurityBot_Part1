@@ -33,6 +33,42 @@ namespace Ageisynth_CybersecurityBot_Part1
             store_ignore();  // Load ignored words
             store_replies(); // Load predefined replies
 
+            // Display welcome banner
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("_==============================================================================================_");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("            |   Welcome to Ageisynth Awareness CyberSecurity Bot   |");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("_==============================================================================================_");
+
+            // Ask for user's name
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("AgeisynthBot:-> ");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("Please enter your name.");
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("You:-> ");
+            Console.ForegroundColor = ConsoleColor.White;
+            user_name = Console.ReadLine();
+
+            // Greet the user with their name
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("AgeisynthBot:-> ");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("Hey " + user_name + ", can I assist you today?");
+
+            // Start chatbot conversation loop
+            do
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write(user_name + ":-> ");
+                Console.ForegroundColor = ConsoleColor.White;
+                user_asking = Console.ReadLine();
+
+                // Process user input and generate response
+                ResponsesChat(user_asking);
+            } while (user_asking.ToLower() != "exit"); // Keep running until user types "exit"
 
         }// End of Constructor
 
