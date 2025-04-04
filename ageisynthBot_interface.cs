@@ -68,7 +68,7 @@ namespace Ageisynth_CybersecurityBot_Part1
 
                 // Process user input and generate response
                 ResponsesChat(user_asking);
-            } while (user_asking.ToLower() != "exit"); // Keep running until user types "exit"
+            } while (user_asking.ToLower() != "exit"); // Keep running until user types "exit" for app
 
         }// End of Constructor
 
