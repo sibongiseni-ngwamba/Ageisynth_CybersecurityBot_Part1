@@ -10,6 +10,7 @@ namespace Ageisynth_CybersecurityBot_Part1
         // Constructor: When this class is created, it calls the logo_creator
         public ascii_logo()
         {
+            logo_creator();
         }
         // Method to create and display the ASCII art logo from an image
         private void logo_creator()
