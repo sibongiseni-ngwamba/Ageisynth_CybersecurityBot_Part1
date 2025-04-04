@@ -30,6 +30,10 @@ namespace Ageisynth_CybersecurityBot_Part1
         // Constructor - This runs automatically when a new object of ChatbotResponse is created
         public ageisynthBot_interface()
         {
+            store_ignore();  // Load ignored words
+            store_replies(); // Load predefined replies
+
+
         }// End of Constructor
 
         // Method that handles responses to the user input
