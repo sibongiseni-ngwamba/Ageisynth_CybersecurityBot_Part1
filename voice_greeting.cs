@@ -10,6 +10,7 @@ namespace Ageisynth_CybersecurityBot_Part1
         // Constructor: Automatically plays the welcome message when an object is created
         public voice_greeting()
         {
+            playWelcome_message();
         }
         // Private method to play the welcome audio message
         private void playWelcome_message()
