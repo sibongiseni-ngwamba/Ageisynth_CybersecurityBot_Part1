@@ -15,6 +15,10 @@ namespace Ageisynth_CybersecurityBot_Part1
             // Create a new instance of the voice_greeting class
             // This will automatically play the welcome greeting audio
             new voice_greeting() { };
+
+            // Create a new instance of the ascii_logo class
+            // This likely displays an ASCII art logo (class needs to be defined elsewhere in the project)
+            new ascii_logo() { };
         }
     }
 }
