@@ -32,6 +32,68 @@ namespace Ageisynth_CybersecurityBot_Part1
         {
         }// End of Constructor
 
+        // Method to check if user's question matches a predefined special question
+        private string HandleSpecialQuestions(string userInput)
+        {
+            for (int i = 0; i < specialQuestions.Length; i++)
+            {
+                if (userInput.Contains(specialQuestions[i]))
+                {
+                    return specialResponses[i]; // Return matching special response
+                }
+            }
+            return null;
+        }
+
+        // Filters user's input and matches keywords with known responses
+        private string ApplyFilter(string userInput)
+        {
+            if (string.IsNullOrWhiteSpace(userInput))
+            {
+                return "I didn’t quite understand that. Could you rephrase?";
+            }
+
+            string[] store_word = userInput.ToLower().Split(' '); // Break input into lowercase words
+            ArrayList store_final_words = new ArrayList();
+
+            // Remove ignored words from the input
+            foreach (string word in store_word)
+            {
+                if (!ignore.Contains(word))
+                {
+                    store_final_words.Add(word);
+                }
+            }
+
+            string message = string.Empty;
+            bool found = false;
+
+            // Compare remaining words to stored replies
+            foreach (string keyword in store_final_words)
+            {
+                foreach (string reply in replies)
+                {
+                    if (reply.ToLower().IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        message += $"- {reply} \n";
+                        found = true;
+                    }
+                }
+            }
+
+            // Return matched message or fallback
+
+            //if satement display anwser or error message
+            if (found)
+            {
+                return message; // If matches were found, return the constructed message 
+            }
+            else
+            {
+                return "I didn’t quite understand that. Could you rephrase?"; // If no matches were found, return a default response
+            }
+        }
+
         // Stores list of valid chatbot replies for different topics
         private void store_replies()
         {
