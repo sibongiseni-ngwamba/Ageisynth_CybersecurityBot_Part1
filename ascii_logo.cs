@@ -11,7 +11,7 @@ namespace Ageisynth_CybersecurityBot_Part1
         public ascii_logo()
         {
             logo_creator();
-        }
+        }// End of Constructor
         // Method to create and display the ASCII art logo from an image
         private void logo_creator()
         {
@@ -57,5 +57,5 @@ namespace Ageisynth_CybersecurityBot_Part1
                 Console.WriteLine();
             } // End of nested loop
         } // End of logo_creator method
-    }
-}
+    }// End of Ascii Logo class
+}// End of Namespace

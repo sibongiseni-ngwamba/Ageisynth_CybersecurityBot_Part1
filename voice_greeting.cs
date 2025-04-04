@@ -11,7 +11,7 @@ namespace Ageisynth_CybersecurityBot_Part1
         public voice_greeting()
         {
             playWelcome_message();
-        }
+        }// End of Constructor
         // Private method to play the welcome audio message
         private void playWelcome_message()
         {
@@ -41,7 +41,7 @@ namespace Ageisynth_CybersecurityBot_Part1
             {
                 // Display any errors that occur while trying to play the audio
                 Console.WriteLine(audioErrror.Message);
-            }
-        }
-    }
-}
+            }// End of try and catch
+        }// End of Play Welcome Message
+    }// End of Voice Greeting class
+}// End of Namespace

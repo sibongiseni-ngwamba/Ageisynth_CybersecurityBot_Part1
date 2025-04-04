@@ -23,6 +23,6 @@ namespace Ageisynth_CybersecurityBot_Part1
             // Create a new instance of the ChatbotResponse class
             // This could initiate a chatbot interaction or display a message (class needs to be defined elsewhere)
             new ageisynthBot_interface() { };
-        }
-    }
-}
+        }// End of Main Method
+    }// End of Main Program
+}// End of Namespace
