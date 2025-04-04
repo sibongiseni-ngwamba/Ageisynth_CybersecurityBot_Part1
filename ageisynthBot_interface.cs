@@ -89,7 +89,7 @@ namespace Ageisynth_CybersecurityBot_Part1
             if (asked.ToLower() == "exit")
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write("\nAgeisynthBot: -> ");
+                Console.Write("AgeisynthBot: -> ");
                 Console.ForegroundColor = ConsoleColor.Gray;
                 TypeEffect("Thank you for using Ageisynth AI, bye!");
                 Console.ResetColor();

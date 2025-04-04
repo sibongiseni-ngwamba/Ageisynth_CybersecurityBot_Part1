@@ -28,7 +28,7 @@ namespace Ageisynth_CybersecurityBot_Part1
             Bitmap image = new Bitmap(full_path);
 
             // Resize the image to 150 pixels wide and 120 pixels tall to fit better in the console
-            image = new Bitmap(image, new Size(150, 120));
+            image = new Bitmap(image, new Size(170, 140));
 
             // Loop through every row (height) of pixels in the image
             for (int height = 0; height < image.Height; height++)
