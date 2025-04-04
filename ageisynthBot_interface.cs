@@ -135,7 +135,7 @@ namespace Ageisynth_CybersecurityBot_Part1
                     TypeEffect("I didn’t quite understand that. Could you rephrase?");
                 }
             }
-        }
+        }// End of Method
 
         // Method to check if user's question matches a predefined special question
         private string HandleSpecialQuestions(string userInput)
