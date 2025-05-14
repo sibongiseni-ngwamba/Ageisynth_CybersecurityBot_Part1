@@ -310,5 +310,60 @@ namespace Ageisynth_CybersecurityBot_Part1
 
             return false;
         }//End of method
+
+        // Handle queries about previously stored memory
+        private bool HandleMemoryQuery(string userInput)
+        {
+            string lowercaseInput = userInput.ToLower();
+
+            // If user asks what they were interested in before
+            if (lowercaseInput.Contains("what was i interested in") && userMemory.ContainsKey("interest"))
+            {
+                DisplayBotMessage($"You previously mentioned an interest in {userMemory["interest"]}. Would you like to know more about it?");
+                return true;
+            }
+
+            // If we have stored interest and user mentions it in a new question
+            if (userMemory.ContainsKey("interest") && lowercaseInput.Contains(userMemory["interest"]))
+            {
+                string interest = userMemory["interest"];
+
+                // Check if we have responses for this topic
+                if (topicResponses.ContainsKey(interest))
+                {
+                    string response = GetRandomResponse(topicResponses[interest]);
+                    DisplayBotMessage($"As someone interested in {interest}, you might find this helpful: {response}");
+                    return true;
+                }
+            }
+
+            // Added: If user wants to see their stored information
+            if (lowercaseInput.Contains("what do you know about me") ||
+                lowercaseInput.Contains("what do you remember") ||
+                lowercaseInput.Contains("my information"))
+            {
+                if (userMemory.Count > 0)
+                {
+                    DisplayBotMessage($"Here's what I remember about you, {userName}:");
+                    foreach (var item in userMemory)
+                    {
+                        if (item.Key != "name") // Skip name since we already addressed them by name
+                        {
+                            DisplayBotMessage($"- Your {item.Key}: {item.Value}");
+                        }
+                    }
+                    return true;
+                }
+                else
+                {
+                    DisplayBotMessage($"I only know your name is {userName}. You can tell me about your interests in cybersecurity topics, and I'll remember them for next time!");
+                    return true;
+                }
+            }
+
+            return false;
+        }//End of method
+
+
     }// End of AgeisynthBot
 }//End of Namespace
