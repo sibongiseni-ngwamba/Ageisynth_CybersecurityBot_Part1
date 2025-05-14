@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Ageisynth_CybersecurityBot_Part1
@@ -55,7 +56,19 @@ namespace Ageisynth_CybersecurityBot_Part1
         // Constructor - This runs automatically when a new object of ChatbotResponse is created
         public ageisynthBot_interface()
         {
-            
+            InitializeIgnoreWords();
+            InitializeResponses();
+            InitializeSpecialQuestions();
+            InitializeFollowUpResponses();
+
+            // Load memory before displaying welcome
+            LoadMemory();
+
+            DisplayWelcomeBanner();
+            GetUserName();
+
+            // Start chatbot conversation loop
+            RunChatLoop();
 
         }// End of Constructor
 
