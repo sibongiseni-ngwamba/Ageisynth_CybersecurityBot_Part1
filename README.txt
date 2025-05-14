@@ -1,99 +1,119 @@
-===========================
-AegiSynthBot - README FILE
-===========================
+=====================================================
+AgeisynthBot Cybersecurity Assistant - README FILE
+=====================================================
 
-Project Details:
+Project Details
 ----------------
-1. Project Name: Ageisynth_CybersecurityBot_Part1 (AI Cybersecurity Assistant)
-2. .NET Framework: 4.7.2
-3. Template: Console App (C# - .NET Framework)
+- Project Name: Ageisynth_CybersecurityBot_Part1
+- Type: Console Application (.NET Framework)
+- Purpose: Interactive cybersecurity education and awareness
 
 ==================
-📘 USER GUIDE
+User Guide
 ==================
 
-Step 1: Running the Application
+Getting Started
+----------------
+Running the Application
+1. Launch the application by running the executable
+2. An audio greeting will play (using `greeting.wav`)
+   - The system automatically looks for this file in the root project directory
+   - If the file is missing, an error message will be displayed
+3. An ASCII art logo will appear (generated from `logo.jpg`)
+   - The image is converted to ASCII art for display in the console
+   - If the image file is missing, an error message will be displayed
+4. The welcome banner will appear at the top of the console
+
+Initial Setup
+----------------
+1. If this is your first time using the application, you'll be asked to enter your name
+2. If you've used the application before, it will remember your name and ask if you're the same person
+3. Once your identity is confirmed, the chatbot will welcome you and the conversation begins
+
+==============================
+Interacting with AgeisynthBot
+==============================
+
+Supported Cybersecurity Topics
 -------------------------------
-- Once you run the application, a greeting will be played using a `.wav` audio file.
-- This happens automatically — the system looks for `greeting.wav` in the correct folder.
-- If the `.wav` file is missing or cannot be found, an error message will be displayed.
-- Make sure the audio file is in the root of the project directory (NOT in `bin\Debug`).
+You can ask about various cybersecurity topics including:
+- **Passwords** - Security practices, management, and two-factor authentication
+- **Phishing** - Identifying and avoiding phishing attempts
+- **Privacy** - Managing your online privacy settings and data
+- **Malware** - Prevention, detection, and protection
+- **Firewalls** - Configuration and best practices
+- **Scams** - How to identify and avoid online scams
+- **Attacks** - Types of cyber attacks and defenses
+- **SQL Injection** - Understanding and preventing SQL-based attacks
 
-Step 2: Displaying the ASCII Logo
----------------------------------
-- After the greeting finishes playing, a logo will appear on the console as ASCII art.
-- This logo is generated from a `logo.jpg` image.
-- If the image is missing or not found, the app will show an error.
-- Ensure that `logo.jpg` is also in the root of the project directory.
-
-Step 3: AI Text Greeting
-------------------------
-- Once the logo is displayed, a text-based greeting message will appear:
-  
-  ➤ "Welcome to AI Cyber Security"
-
-Step 4: Entering Your Username
-------------------------------
-- The AI will then ask for your **username**.
-- This is how the AI will refer to you in the conversation.
-- For example, if you type `Steve`, the bot will talk to you like this:
-  
-  ➤ `Steve:-> your question`
-
-Step 5: Starting the Chat
---------------------------
-- Now that you're in, the AI will respond to you in a friendly manner using your name.
-- You can start asking questions related to cybersecurity.
-
-Step 6: Supported Topics
-------------------------
-You can ask about these cybersecurity topics:
-
-✔ Passwords  
-✔ Phishing  
-✔ SQL Injection  
-✔ Malware  
-✔ Cyber Attacks  
-
-💡 You can also ask:
+Special Commands and Questions
+--------------------------------
+AgeisynthBot recognizes special phrases like:
 - "how are you"
-- "what can I ask about"
 - "what is your purpose"
+- "what can i ask about"
+- "who made you"
+- "help"
+- "how do i exit"
 
-⚠️ These specific phrases have special answers. Please spell them correctly for the AI to understand.
+Example Interactions
+---------------------
 
-Step 7: Example Interaction
+```
+You:-> Tell me about password security
+AgeisynthBot:-> Make sure to use strong, unique passwords for each account. Aim for at least 12 characters with a mix of letters, numbers, and symbols.
+
+You:-> I'm interested in phishing
+AgeisynthBot:-> Great! I'll remember that you're interested in phishing. It's an important aspect of cybersecurity!
+Here's something about phishing: Be cautious of emails asking for personal information. Legitimate organizations rarely request sensitive details via email.
+```
+==================
+Advanced Features
+==================
+
+Memory and Personalization
 ---------------------------
-Here’s a sample interaction between a user and AegiSynthBot:
+- AgeisynthBot remembers your name between sessions
+- It can track your interests in specific cybersecurity topics
+- You can ask "what do you know about me" or "what do you remember" to see stored information
 
-Steve:-> password
-AegiSynthBot:->
+Sentiment Recognition
+----------------------
+The bot can detect and respond to different emotional states:
+- If you seem worried, it will provide reassurance
+- If you're confused, it will simplify explanations
+- If you're frustrated, it will offer more patient guidance
+- If you're curious, it will encourage your interest
+- If you're happy, it will match your enthusiasm
 
-Passwords need to be protected and kept safe.
+Follow-up Questions
+--------------------
+Based on your conversation, the bot may ask relevant follow-up questions to provide more specific information about topics you're discussing.
 
-Use strong, unique passwords and enable two-factor authentication.
+===========================
+Exiting the Application
+===========================
 
-Never reuse passwords across different sites.
+To exit AgeisynthBot, simply type:
+```
+exit
+```
 
-Consider using a password manager for storing your passwords.
+Technical Notes
+- User memory is saved to a file called `memory.txt` in the application directory
+- The application uses a keyword-matching system to provide relevant responses
+- Sentiment detection helps tailor responses to your current emotional state
+- Audio greeting uses a `.wav` file that should be placed in the project root directory
+- ASCII art logo is generated from a `logo.jpg` image file in the project root directory
+- Make sure both media files are in the root directory of the project (NOT in `bin\Debug`)
 
-Phishing attacks trick users into revealing sensitive information like passwords.
-
-🧠 Just type the topic (e.g., "malware" or "sql injection") and the AI will guide you!
-
-Additional Notes:
-------------------
-🔴 If you type a question that is NOT in the AI’s knowledge base, it will let you know that it's trained only on cybersecurity topics.
-
-⚠️ If you press ENTER without typing anything, it will remind you that input is required.
-
-To Exit the Application:
--------------------------
-✔ Simply type: `exit`
-
-======================
-Thanks for using AegiSynthBot!
+---
+========================================
+Thank you for using AgeisynthBot!
 Stay Cyber-Safe! 🛡️
-======================
-Links: https://github.com/sibongiseni-ngwamba/Ageisynth_CybersecurityBot_Part1.git
-	   git@github.com:sibongiseni-ngwamba/Ageisynth_CybersecurityBot_Part1.git
+========================================
+
+========================================================================================
+VERY IMPORTMANT added part2poe branch and merged it into the main branch on GITHUB!!!!!
+========================================================================================
+Links to updated GitHub: https://github.com/sibongiseni-ngwamba/Ageisynth_CybersecurityBot_Part1.git
