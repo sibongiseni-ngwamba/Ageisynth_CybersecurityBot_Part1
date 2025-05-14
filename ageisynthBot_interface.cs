@@ -282,6 +282,33 @@ namespace Ageisynth_CybersecurityBot_Part1
             return modifiedResponse;
         }//End of method
 
+        // Handle user declaring interest in topics
+        private bool HandleInterestDeclaration(string userInput)
+        {
+            string lowercaseInput = userInput.ToLower();
 
+            // Check for interest declarations
+            if (lowercaseInput.Contains("interested in") || lowercaseInput.Contains("curious about"))
+            {
+                foreach (string topic in topicResponses.Keys)
+                {
+                    if (lowercaseInput.Contains(topic))
+                    {
+                        // Store the user's interest
+                        userMemory["interest"] = topic;
+
+                        DisplayBotMessage($"Great! I'll remember that you're interested in {topic}. It's an important aspect of cybersecurity!");
+
+                        // Provide a relevant response about their interest
+                        string topicResponse = GetRandomResponse(topicResponses[topic]);
+                        DisplayBotMessage($"Here's something about {topic}: {topicResponse}");
+
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }//End of method
     }// End of AgeisynthBot
 }//End of Namespace
