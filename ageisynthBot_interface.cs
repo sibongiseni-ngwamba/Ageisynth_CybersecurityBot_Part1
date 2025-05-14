@@ -4,23 +4,26 @@ using System.Collections.Generic;
 
 namespace Ageisynth_CybersecurityBot_Part1
 {
-    // User information storage
-    private string userName = string.Empty;
-    private Dictionary<string, string> userMemory = new Dictionary<string, string>();
+    // Class responsible for chatbot interaction and response handling
+    public class ageisynthBot_interface
+    {
+        // User information storage
+        private string userName = string.Empty;
+        private Dictionary<string, string> userMemory = new Dictionary<string, string>();
 
-    // File path for memory storage
-    private const string MEMORY_FILE = "memory.txt";
+        // File path for memory storage
+        private const string MEMORY_FILE = "memory.txt";
 
-    // Track conversation context
-    private string currentTopic = string.Empty;
-    private List<string> conversationHistory = new List<string>();
+        // Track conversation context
+        private string currentTopic = string.Empty;
+        private List<string> conversationHistory = new List<string>();
 
-    // Track active follow-up questions
-    private string pendingFollowUp = string.Empty;
-    private Dictionary<string, Dictionary<string, string>> followUpResponses = new Dictionary<string, Dictionary<string, string>>();
+        // Track active follow-up questions
+        private string pendingFollowUp = string.Empty;
+        private Dictionary<string, Dictionary<string, string>> followUpResponses = new Dictionary<string, Dictionary<string, string>>();
 
-    // Sentiment tracking
-    private Dictionary<string, bool> detectedSentiments = new Dictionary<string, bool>
+        // Sentiment tracking
+        private Dictionary<string, bool> detectedSentiments = new Dictionary<string, bool>
         {
             { "worried", false },
             { "confused", false },
@@ -29,17 +32,17 @@ namespace Ageisynth_CybersecurityBot_Part1
             { "happy", false }
         };
 
-    // Words to ignore in user input
-    private HashSet<string> ignoreWords = new HashSet<string>();
+        // Words to ignore in user input
+        private HashSet<string> ignoreWords = new HashSet<string>();
 
-    // Keyword-based response system
-    private Dictionary<string, List<string>> topicResponses = new Dictionary<string, List<string>>();
+        // Keyword-based response system
+        private Dictionary<string, List<string>> topicResponses = new Dictionary<string, List<string>>();
 
-    // Special questions handling
-    private Dictionary<string, string> specialQuestions = new Dictionary<string, string>();
+        // Special questions handling
+        private Dictionary<string, string> specialQuestions = new Dictionary<string, string>();
 
-    // Default responses for unknown inputs
-    private List<string> defaultResponses = new List<string>
+        // Default responses for unknown inputs
+        private List<string> defaultResponses = new List<string>
         {
             "I didn't quite understand that. Could you rephrase?",
             "I'm not sure I follow. Can you try asking that in a different way?",
@@ -47,10 +50,6 @@ namespace Ageisynth_CybersecurityBot_Part1
             "I'm not familiar with that topic yet. Would you like to know about password safety, phishing, or malware instead?"
         };
 
-    // Class responsible for chatbot interaction and response handling
-    public class ageisynthBot_interface
-    {
-        
 
         // Constructor - This runs automatically when a new object of ChatbotResponse is created
         public ageisynthBot_interface()
@@ -58,6 +57,7 @@ namespace Ageisynth_CybersecurityBot_Part1
             
 
         }// End of Constructor
+
 
     }// End of AgeisynthBot
 }//End of Namespace
