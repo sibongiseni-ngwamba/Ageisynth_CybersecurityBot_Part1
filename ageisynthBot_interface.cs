@@ -364,6 +364,82 @@ namespace Ageisynth_CybersecurityBot_Part1
             return false;
         }//End of method
 
+        // Check for special questions
+        private string HandleSpecialQuestions(string userInput)
+        {
+            string lowercaseInput = userInput.ToLower();
+
+            foreach (var question in specialQuestions)
+            {
+                if (lowercaseInput.Contains(question.Key))
+                {
+                    return question.Value;
+                }
+            }
+
+            return null;
+        }//End of method
+
+        // Filter and match keywords to generate responses
+        private string GenerateKeywordResponse(string userInput)
+        {
+            if (string.IsNullOrWhiteSpace(userInput))
+            {
+                return GetRandomResponse(defaultResponses);
+            }
+
+            // Break input into lowercase words and filter out ignored words
+            string[] inputWords = userInput.ToLower().Split(new[] { ' ', ',', '.', '?', '!' },
+                StringSplitOptions.RemoveEmptyEntries);
+
+            List<string> relevantWords = inputWords.Where(word => !ignoreWords.Contains(word)).ToList();
+
+            // Identify topics mentioned in the input
+            List<string> detectedTopics = new List<string>();
+
+            foreach (string word in relevantWords)
+            {
+                foreach (string topic in topicResponses.Keys)
+                {
+                    // Check if the word matches a topic keyword
+                    if (topic.Contains(word) || word.Contains(topic))
+                    {
+                        detectedTopics.Add(topic);
+                        // Update current topic for context
+                        currentTopic = topic;
+                    }
+                }
+            }
+
+            // If continuing a conversation on the same topic
+            if (detectedTopics.Count == 0 && !string.IsNullOrEmpty(currentTopic) &&
+                (userInput.ToLower().Contains("more") || userInput.ToLower().Contains("tell me") ||
+                 userInput.ToLower().Contains("what about")))
+            {
+                detectedTopics.Add(currentTopic);
+            }
+
+            // If no topics detected, return empty
+            if (detectedTopics.Count == 0)
+            {
+                return string.Empty;
+            }
+
+            // Generate responses for each detected topic
+            string combinedResponse = string.Empty;
+
+            foreach (string topic in detectedTopics.Distinct())
+            {
+                if (topicResponses.ContainsKey(topic))
+                {
+                    // Get a random response for this topic
+                    string topicResponse = GetRandomResponse(topicResponses[topic]);
+                    combinedResponse += $"{topic}: {topicResponse}\n\n";
+                }
+            }
+
+            return combinedResponse.Trim();
+        }//End of method
 
     }// End of AgeisynthBot
 }//End of Namespace
