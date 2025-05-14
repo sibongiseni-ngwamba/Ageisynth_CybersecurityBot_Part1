@@ -246,6 +246,42 @@ namespace Ageisynth_CybersecurityBot_Part1
             {
                 detectedSentiments["happy"] = true;
             }
-        }
+        }//End of method
+
+        // Apply sentiment context to responses
+        private string ApplySentimentContext(string baseResponse)
+        {
+            string modifiedResponse = baseResponse;
+
+            if (detectedSentiments["worried"])
+            {
+                modifiedResponse = "I understand you might be worried about  " + baseResponse +
+                    " Remember that taking small steps to improve your security can make a big difference.";
+            }
+            else if (detectedSentiments["confused"])
+            {
+                modifiedResponse = "This topic can be confusing, so let me explain it simply. " + baseResponse +
+                    " Would you like me to clarify anything specific?";
+            }
+            else if (detectedSentiments["frustrated"])
+            {
+                modifiedResponse = "I can see this might be frustrating. " + baseResponse +
+                    " Let's take this one step at a time to make it more manageable.";
+            }
+            else if (detectedSentiments["curious"])
+            {
+                modifiedResponse = "I'm glad you're curious about this! " + baseResponse +
+                    " Learning about cybersecurity is an important step toward staying safe online.";
+            }
+            else if (detectedSentiments["happy"])
+            {
+                modifiedResponse = "Great! I'm happy to share this information with you. " + baseResponse +
+                    " It's always good to see someone enthusiastic about cybersecurity!";
+            }
+
+            return modifiedResponse;
+        }//End of method
+
+
     }// End of AgeisynthBot
 }//End of Namespace
