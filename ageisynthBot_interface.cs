@@ -103,7 +103,71 @@ namespace Ageisynth_CybersecurityBot_Part1
 
             // Exit message
             DisplayBotMessage($"Thank you for using Ageisynth AI, {userName}! Stay safe online!");
-        }
+        }//End of chat loop
+
+        // Method that processes user input and determines appropriate response
+        public void ProcessUserInput(string userInput)
+        {
+            // If input is empty or whitespace
+            if (string.IsNullOrWhiteSpace(userInput))
+            {
+                DisplayBotMessage(GetRandomResponse(defaultResponses));
+                return;
+            }
+
+            // First check if we're waiting for a follow-up response
+            if (!string.IsNullOrEmpty(pendingFollowUp))
+            {
+                if (HandleFollowUpResponse(userInput))
+                {
+                    return;
+                }
+            }
+
+            // Detect and store user sentiment
+            DetectSentiment(userInput);
+
+            // Check for memory-related queries
+            if (HandleMemoryQuery(userInput))
+            {
+                return;
+            }
+
+            // Check for interest declarations and store them
+            if (HandleInterestDeclaration(userInput))
+            {
+                // Save memory when a new interest is registered
+                SaveMemory();
+                return;
+            }
+
+            // Check for special questions first
+            string specialResponse = HandleSpecialQuestions(userInput);
+            if (specialResponse != null)
+            {
+                DisplayBotMessage(specialResponse);
+                return;
+            }
+
+            // Apply keyword matching for cybersecurity topics
+            string responseMessage = GenerateKeywordResponse(userInput);
+
+            if (!string.IsNullOrEmpty(responseMessage))
+            {
+                // Add sentiment-based response modifications
+                responseMessage = ApplySentimentContext(responseMessage);
+
+                DisplayBotMessage(responseMessage);
+
+                // Check if the conversation should continue with a follow-up
+                OfferFollowUp();
+            }
+            else
+            {
+                // If no keywords matched, use default response
+                DisplayBotMessage(GetRandomResponse(defaultResponses));
+            }
+        }//End of process user input
 
     }// End of AgeisynthBot
 }//End of Namespace
