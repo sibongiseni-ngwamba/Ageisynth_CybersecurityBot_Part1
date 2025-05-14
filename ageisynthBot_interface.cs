@@ -58,6 +58,52 @@ namespace Ageisynth_CybersecurityBot_Part1
 
         }// End of Constructor
 
+        //Run loop method
+        private void RunChatLoop()
+        {
+            string userInput;
+            bool firstInteraction = true;
+
+            do
+            {
+                // First interaction greeting
+                if (firstInteraction)
+                {
+                    DisplayBotMessage($"Hey {userName}, can I assist you with cybersecurity questions today? You can ask about topics like passwords, phishing, privacy, or malware.");
+
+                    // Add check for previous interests after first greeting
+                    if (userMemory.TryGetValue("interest", out string interest))
+                    {
+                        DisplayBotMessage($"I remember you were interested in {interest}. Would you like to continue learning about that topic?");
+                    }
+
+                    firstInteraction = false;
+                }
+
+                // Get user input
+                DisplayUserPrompt();
+                userInput = Console.ReadLine();
+
+                // Store in conversation history
+                if (!string.IsNullOrWhiteSpace(userInput))
+                {
+                    conversationHistory.Add(userInput);
+                }
+
+                // Process user input and generate response
+                if (userInput?.ToLower() != "exit")
+                {
+                    ProcessUserInput(userInput);
+                }
+
+            } while (userInput?.ToLower() != "exit"); // Keep running until user types "exit"
+
+            // Save memory before exiting
+            SaveMemory();
+
+            // Exit message
+            DisplayBotMessage($"Thank you for using Ageisynth AI, {userName}! Stay safe online!");
+        }
 
     }// End of AgeisynthBot
 }//End of Namespace
