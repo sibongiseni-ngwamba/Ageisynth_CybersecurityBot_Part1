@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Ageisynth_CybersecurityBot_Part1
 {
@@ -204,5 +205,47 @@ namespace Ageisynth_CybersecurityBot_Part1
             return false;
         }//End of method
 
+        // Detect user sentiment from input
+        private void DetectSentiment(string userInput)
+        {
+            string lowercaseInput = userInput.ToLower();
+
+            // Reset previously detected sentiments
+            foreach (string sentiment in detectedSentiments.Keys.ToList())
+            {
+                detectedSentiments[sentiment] = false;
+            }
+
+            // Check for sentiment keywords
+            if (lowercaseInput.Contains("worried") || lowercaseInput.Contains("afraid") ||
+                lowercaseInput.Contains("scared") || lowercaseInput.Contains("fear"))
+            {
+                detectedSentiments["worried"] = true;
+            }
+
+            if (lowercaseInput.Contains("confused") || lowercaseInput.Contains("don't understand") ||
+                lowercaseInput.Contains("unclear") || lowercaseInput.Contains("complicated"))
+            {
+                detectedSentiments["confused"] = true;
+            }
+
+            if (lowercaseInput.Contains("frustrated") || lowercaseInput.Contains("annoyed") ||
+                lowercaseInput.Contains("upset") || lowercaseInput.Contains("angry"))
+            {
+                detectedSentiments["frustrated"] = true;
+            }
+
+            if (lowercaseInput.Contains("curious") || lowercaseInput.Contains("interested") ||
+                lowercaseInput.Contains("want to know") || lowercaseInput.Contains("tell me more"))
+            {
+                detectedSentiments["curious"] = true;
+            }
+
+            if (lowercaseInput.Contains("happy") || lowercaseInput.Contains("glad") ||
+                lowercaseInput.Contains("great") || lowercaseInput.Contains("excellent"))
+            {
+                detectedSentiments["happy"] = true;
+            }
+        }
     }// End of AgeisynthBot
 }//End of Namespace
