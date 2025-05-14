@@ -169,5 +169,40 @@ namespace Ageisynth_CybersecurityBot_Part1
             }
         }//End of process user input
 
+        // Handle simple responses to follow-up questions
+        private bool HandleFollowUpResponse(string userInput)
+        {
+            string lowercaseInput = userInput.ToLower().Trim();
+
+            // Check for yes/no type responses to our pending follow-up
+            if (lowercaseInput == "yes" || lowercaseInput == "yeah" || lowercaseInput == "yep" ||
+                lowercaseInput == "sure" || lowercaseInput == "ok" || lowercaseInput == "okay")
+            {
+                // If user says yes, provide the positive response
+                if (followUpResponses.ContainsKey(pendingFollowUp) &&
+                    followUpResponses[pendingFollowUp].ContainsKey("yes"))
+                {
+                    DisplayBotMessage(followUpResponses[pendingFollowUp]["yes"]);
+                    pendingFollowUp = string.Empty;
+                    return true;
+                }
+            }
+            else if (lowercaseInput == "no" || lowercaseInput == "nope" || lowercaseInput == "nah")
+            {
+                // If user says no, provide the negative response
+                if (followUpResponses.ContainsKey(pendingFollowUp) &&
+                    followUpResponses[pendingFollowUp].ContainsKey("no"))
+                {
+                    DisplayBotMessage(followUpResponses[pendingFollowUp]["no"]);
+                    pendingFollowUp = string.Empty;
+                    return true;
+                }
+            }
+
+            // If we got here, we didn't handle the follow-up
+            pendingFollowUp = string.Empty;
+            return false;
+        }//End of method
+
     }// End of AgeisynthBot
 }//End of Namespace
